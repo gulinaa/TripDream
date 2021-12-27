@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% if not destinations %}
+        <p>Nothing found from your request</p>
+     {% else %}
+     {% for destination in destinations %}
+     <p>
+            <a href="{% url 'destination-details' destination.id %}">{{ destination.name }}</a><br>
+        {{ destination.price }}
+     </p>
+    {% endfor %}
+    {% endif %}
+{% endblock body %}

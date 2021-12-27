@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Cart{% endblock title %}
+{% block body %}
+    <h3>Your Cart:</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Image</th>
+      <th scope="col">Tour</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price per tour</th>
+       <th scope="col">Amount</th>
+       <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for tour in cart %}
+    <tr>
+      <td>#image</td>
+      <td>{{ tour.destination.name }}</td>
+      <td>
+        {{ tour.quantity }}
+      </td><a href="{% url 'increment_quantity' tour.destination.id %}">
+      <button class="btn btn-outline-primary btn-sm">+</button>
+    </a>
+      <td class="num">{{ tour.price }}</td>
+      <td class="num">{{ tour.total_price }}</td>
+      <td><a href="{% url 'remove-from-cart' tour.destination.id  %}">Discard</a></td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock body %}

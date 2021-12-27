@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}{{ destination.name }}{% endblock title %}
+
+{% block body %}
+<head>
+<style>
+div {
+  padding-left: 30px;
+}
+</style>
+</head>
+<head>
+    <div>
+  <h1>{{ destinations.name }}</h1>
+  <p>{{ destinations.description }}</p>
+  <p>{{ destinations.price }}</p>
+  {% if destinations.images.count %}
+    {% for pic in destinations.images.all %}
+      {% if pic.image %}
+        <img src="{{ pic.image.url }}" width="300" height="300">
+      {% else %}
+        <img src="https://via.placeholder.com/300">"
+      {% endif %}
+    {% endfor %}
+  {% else %}
+   <img src="https://via.placeholder.com/300">"
+  {% endif %}
+  <form method="post" action="{% url 'add-to-cart' destinations.id %}">
+    {% csrf_token %}
+    {{ cart_form }}
+    <button type="submit">Add to cart</button>
+  </form>
+  <p><a role="button" href="{% url 'update-destination' destinations.id %}"> Edit</a>
+    or <a role="button" href="{% url 'delete-destination' destinations.id %}">Delete</a>
+  </div>
+  </head>
+{% endblock body %}

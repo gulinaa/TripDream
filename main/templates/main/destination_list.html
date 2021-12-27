@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block body %}
+<head>
+<style>
+div {
+  padding-left: 30px;
+}
+</style>
+</head>
+<head>
+    <div>
+    <h1>Destinations</h1>
+    {% for destination in destinations %}
+     <p>
+
+         <a href="{% url 'destination-details' destination.id %}">{{ destination.name }}</a><br>
+        {{ destination.price }}
+     </p>
+    {% endfor %}
+    <p>
+        {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        {{ page_obj.number }}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </p>
+    </div>
+</head>
+{% endblock body %}

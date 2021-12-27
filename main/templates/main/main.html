@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Listing</title>
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="main">
+    <div class="products-main">
+        {% for destination in destinations %}
+        <div class="product-card">
+            <img src="{{ destination.images.first.image.url }}" alt="" class="product-img">
+            <a href="{% url 'destination-details' destination.id %}"></a>
+            <h5>{{ destination.name }}</h5>
+            <h4 class="product-price">{{ destination.price }}</h4>
+            <button class="details-btn">Details</button>
+        </div>
+        {% endfor %}
+        <div class="pagination">
+            <a href="?page={{ destinations.previous_page_number }}">
+                <button class="page-btn">
+                Previous
+            </button>
+            </a>
+            <a href="?page={{ destinations.next_page_number }}">
+            <button class="page-btn">
+                Next
+            </button>
+            </a>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

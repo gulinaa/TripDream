@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+<head>
+<style>
+div {
+  padding-left: 30px;
+}
+</style>
+</head>
+<head>
+    <div>
+    <h1>Are you sure you want to delete destination?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+        <a href="{% url 'destination-details' destination.id %}"><button type="button" >Cancel</button></a>
+    </form>
+        </div>
+{% endblock body %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body %}
+<head>
+<style>
+div {
+  padding-left: 30px;
+}
+</style>
+</head>
+<head>
+    <div>
+    <form method="post">
+       {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Save</button>
+    </form>
+     </div>
+{% endblock body %}
