@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
-class RegistrationForm(forms.ModelForm):
+class RegisterForm(forms.ModelForm):
     password = forms.CharField(min_length=4,
                                widget=forms.PasswordInput)
     password_confirm = forms.CharField(min_length=4,
@@ -12,7 +12,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email', 'name', 'password', 'password_confirm']
+        fields = ('email', 'name', 'password', 'password_confirm')
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -28,7 +28,7 @@ class RegistrationForm(forms.ModelForm):
             raise forms.ValidationError('Passwords does not match')
         return data
 
-    def save(self):
+    def save(self, commit=True):
         data = self.cleaned_data
         user = User.objects.create_user(**data)
         user.create_activation_code()

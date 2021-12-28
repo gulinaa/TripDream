@@ -1,19 +1,23 @@
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, CreateView
 
 from account.forms import *
 
 User = get_user_model()
 
 
-class RegisterView(TemplateView):
-    form_class = RegistrationForm
+class RegisterView(View):
+    model = User
+    form_class = RegisterForm
     template_name = 'account/registration.html'
+    success_url = reverse_lazy('main')
+    success_message = 'Successfully registered'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
@@ -24,9 +28,9 @@ class RegisterView(TemplateView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            # print('check')
+            print('check')
             form.save()
-            return redirect(reverse_lazy('login'))
+            return redirect(reverse_lazy('destination-list'))
         return render(request,
                       self.template_name,
                       {'form': form})

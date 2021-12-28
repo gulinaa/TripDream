@@ -7,7 +7,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: #87CEFA;
 }
 
 li {
@@ -33,21 +33,19 @@ li.dropdown {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
 
 .dropdown-content a {
-  color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1;}
+.dropdown-content a:hover {
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -74,7 +72,6 @@ li.dropdown {
       <form class="col-12 col-lg-auto mb-3 mb-lg-0" action="{% url 'search' %}">
         <input name ="search" type="search" class="form-control" placeholder="Search..." aria-label="Search">
       </form>
-<head>
   <header class="py-3 mb-4 border-bottom">
     <div class="container d-flex flex-wrap justify-content-center">
       <a href="{% url 'index' %}" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
@@ -91,6 +88,7 @@ li.dropdown {
 <style>
 .center {
   display: block;
+  padding-top: 70px;
   margin: top: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -173,7 +171,7 @@ body {
   </div>
 </div>
 
-<div style="margin-top: 30px;"class="responsive">
+<div style="margin-top: 30px; margin-bottom: 30px;"class="responsive">
   <div class="gallery">
     <a target="_blank" href="img_mountains.jpg">
       <img src="{% static 'img/Italy.png' %}" alt="Mountains" width="600" height="400">
@@ -188,10 +186,7 @@ body {
   <p>Мы предлагаем Вам современные подходы, которые способны открыть Вам разнообразный, уникальный и неповторимый дух, культуру, а главное возможность насладиться ярким отдыхом в разных странах. Все услуги в «Trip of my Dream», отличаются высоким качеством в сочетании с низкими ценами.</p>
   <p>Турагентство «Trip of my Dream» отличается лучшим сервисом в Кыргызстане!</p>
   <p>Наши менеджеры грамотно подберут и организуют Ваш отдых в любой стране мира. У нас имеется широкая партнерская поддержка и прямые контракты с лидерами.</p>
+  <p>Лучшие туристические операторы со всего мира доверяют нам свой продукт, что позволяет нам удовлетворить вкус самого привередливого и заядлого путешественника.</p>
 </div>
-  <div>
-    <a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">More info</a>
-  </div>
-
 </body>
 </html>

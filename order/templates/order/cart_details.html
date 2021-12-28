@@ -5,18 +5,25 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Image</th>
-      <th scope="col">Tour</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price per tour</th>
-       <th scope="col">Amount</th>
-       <th scope="col">Delete</th>
-    </tr>
+      <style>
+th {
+  text-indent: 70px;
+}
+</style>
+      <th scope="col">Destination</th>
+      <th scope="col">Tour quantity</th>
+      <th scope="col">Price per person</th>
+       <th scope="col">Total Price</th>
+
   </thead>
   <tbody>
     {% for tour in cart %}
     <tr>
-      <td>#image</td>
+      <style>
+td {
+  text-indent: 70px;
+}
+</style>
       <td>{{ tour.destination.name }}</td>
       <td>
         {{ tour.quantity }}

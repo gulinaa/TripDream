@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}{{ destination.name }}{% endblock title %}
+{% block title %} {{ destination.name }} {% endblock title %}
 
 {% block body %}
 <head>
@@ -12,6 +12,7 @@ div {
 <head>
     <div>
   <h1>{{ destinations.name }}</h1>
+      <p>{{ destinations.category }}</p>
   <p>{{ destinations.description }}</p>
   <p>{{ destinations.price }}</p>
   {% if destinations.images.count %}

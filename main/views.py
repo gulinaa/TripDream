@@ -6,7 +6,7 @@ from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
 from main.forms import DestinationForm
-from main.models import Destination, DestinationImage
+from main.models import Destination, DestinationImage, Category
 from order.forms import AddToCartForm
 
 
@@ -26,13 +26,6 @@ class DestinationDetailsView(DetailView):
         context = super().get_context_data()
         context['cart_form'] = AddToCartForm()
         return context
-
-
-# ImageFormset = models.Formset_factory(ProductImage,
-#                                     form=ProductImage,
-#                                     extra=3,
-#                                     max_num=5,
-#                                     can_delete=True)
 
 
 class IsAdminMixin(UserPassesTestMixin):
