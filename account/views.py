@@ -11,7 +11,7 @@ from account.forms import *
 User = get_user_model()
 
 
-class RegisterView(View):
+class RegisterView(TemplateView):
     form_class = RegistrationForm
     template_name = 'account/registration.html'
 
@@ -24,9 +24,9 @@ class RegisterView(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST)
         if form.is_valid():
-            print('check')
+            # print('check')
             form.save()
-            return redirect(reverse_lazy('register-success'))
+            return redirect(reverse_lazy('login'))
         return render(request,
                       self.template_name,
                       {'form': form})
@@ -40,7 +40,6 @@ class ActivationView(View):
     def get(self, request, *args, **kwargs):
         code = kwargs.get('code')
         user = get_object_or_404(User, activation_code=code)
-        # user = User.objects.get(activation_code=code)
         user.is_active = True
         user.activation_code = ''
         user.save()

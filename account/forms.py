@@ -83,7 +83,7 @@ class ForgotPasswordForm(forms.Form):
 
 
 class ForgotPasswordCompleteForm(forms.Form):
-    code = forms.CharField(min_length=4, max_length=4)
+    code = forms.CharField(min_length=8, max_length=8)
     password = forms.CharField(min_length=4, widget=forms.PasswordInput)
     password_confirm = forms.CharField(min_length=4, widget=forms.PasswordInput)
 

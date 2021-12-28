@@ -14,7 +14,7 @@ class DestinationsListView(ListView):
     queryset = Destination.objects.all()
     template_name = 'main/destination_list.html'
     context_object_name = 'destinations'
-    paginate_by = 4
+    paginate_by = 2
 
 
 class DestinationDetailsView(DetailView):
@@ -45,7 +45,7 @@ class CreateDestinationView(IsAdminMixin, CreateView):
     queryset = Destination.objects.all()
     template_name = 'main/create_destination.html'
     form_class = DestinationForm
-    success_url = reverse_lazy('destinations-list')
+    success_url = reverse_lazy('destination-list')
 
     def post(self, request, *args, **kwargs):
         self.object = None

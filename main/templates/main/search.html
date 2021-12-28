@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
+{% block title %} {% endblock title %}
 {% block body %}
+<style>
+div {
+  padding-left: 30px;
+}
+</style>
+<div>
     {% if not destinations %}
         <p>Nothing found from your request</p>
      {% else %}
@@ -10,4 +17,5 @@
      </p>
     {% endfor %}
     {% endif %}
+    </div>
 {% endblock body %}

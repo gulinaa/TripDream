@@ -30,8 +30,10 @@ class User(AbstractBaseUser):
     name = models.CharField(max_length=20)
     is_active = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
-    activation_code = models.CharField(max_length=6, blank=True)
+    activation_code = models.CharField(max_length=8, blank=True)
+
     objects = UserManager()
+
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['name']
 
@@ -45,7 +47,7 @@ class User(AbstractBaseUser):
         return self.is_staff
 
     def create_activation_code(self):
-        code = get_random_string(4)
+        code = get_random_string(8)
         self.activation_code = code
         self.save()
 
